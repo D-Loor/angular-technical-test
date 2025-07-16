@@ -1,0 +1,43 @@
+<div class="input-content" [formGroup]="formGroup()!">
+  <label *ngIf="inputData()?.label" class="input-content__label" [for]="inputData()?.id"
+    [class.input-content__label--disabled]="inputData()?.disabled">{{
+    inputData()?.label
+  }}</label>
+
+  <input
+    class="input-content__input"
+    [ngClass]="{
+      'input-content__input--not-label': !inputData()?.label,
+      'input-content__input--small': inputData()?.size == 'small',
+      'input-content__input--disabled': inputData()?.disabled
+    }"
+    [id]="inputData()?.id"
+    [type]="inputData()?.type"
+    [placeholder]="inputData()?.placeholder"
+    [formControlName]="inputData()?.formControlName ?? ''"
+    [required]="inputData()?.required ?? false"
+    [attr.aria-label]="inputData()?.label"
+    [attr.aria-required]="inputData()?.required ?? null"
+    [autocomplete]="false"
+    (keyup)="inputEvent($event)"
+    (change)="inputEvent($event)"
+  />
+
+  <span *ngIf="validateInput() && formGroup()!.get(inputData()!.formControlName)?.errors?.['required']" 
+    class="input-content__error-message">Este campo es requerido!</span>
+  <span *ngIf="validateInput() && formGroup()!.get(inputData()!.formControlName)?.errors?.['invalid']" 
+      class="input-content__error-message">{{ inputData()?.label }} no válido!</span>
+  <span *ngIf="validateInput() && formGroup()!.get(inputData()!.formControlName)?.errors?.['pattern']" 
+    class="input-content__error-message">{{ inputData()?.label }} no válido!</span>
+  <span *ngIf="validateInput() && formGroup()!.get(inputData()!.formControlName)?.errors?.['maxlength']" 
+    class="input-content__error-message">{{ inputData()?.label }} debe contener máximo
+    {{formGroup()!.get(inputData()!.formControlName)?.errors?.['maxlength'].requiredLength}}
+    caracteres!</span>
+  <span *ngIf="validateInput() && formGroup()!.get(inputData()!.formControlName)?.errors?.['minlength']" 
+    class="input-content__error-message">{{ inputData()?.label }} debe contener mínimo 
+    {{formGroup()!.get(inputData()!.formControlName)?.errors?.['minlength'].requiredLength}}
+    caracteres!</span>
+  <span *ngIf="validateInput() && !formGroup()!.get(inputData()!.formControlName)?.errors?.['required'] 
+    && formGroup()!.get(inputData()!.formControlName)?.errors?.['invalidDate']" 
+    class="input-content__error-message">La fecha debe ser mayor o igual a la actual!</span>
+</div>

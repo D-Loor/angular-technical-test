@@ -1,0 +1,64 @@
+@use "sass:color";
+@use '../../../../styles/abstracts/variables' as variables;
+@use '../../../../styles/abstracts/mixins' as mixins;
+
+.button-content {
+    display: block;
+
+    &__button {
+        @include mixins.content-flex(center, center, 6px);
+        padding: 0;
+        height: 46px;
+        padding: 8px 16px;
+        width: 100%;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        min-width: 107px;
+        font-weight: 700;
+        min-height: 30px;
+        transition: color .25s ease-in-out,background-color .25s ease-in-out,border-color .25s ease-in-out,box-shadow .25s ease-in-out;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &--primary {
+            background: variables.$primary-color;
+            color: variables.$secondary-color;
+        }
+    
+        &--primary:hover {
+            background: color.adjust(variables.$primary-color, $lightness: -5%);
+        }
+
+        &--secondary {
+            background: #eaecf2;
+            color: variables.$secondary-color;
+        }
+
+        &--secondary:hover {
+            background-color: color.adjust(#eaecf2, $lightness: -5%);
+        }
+
+        &--small {
+            height: 30px;
+            font-size: 12px;
+            font-weight: 400;
+            border-radius: 5px;
+        }
+
+        &--large {
+            height: 54px;
+        }
+
+        &--disabled  {
+            opacity: .5;
+
+            &:hover {
+                cursor: auto;
+            }
+        }
+    }
+
+}

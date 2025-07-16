@@ -1,0 +1,210 @@
+@use '../../../../styles/abstracts/variables' as variables;
+@use '../../../../styles/abstracts/mixins' as mixins;
+@use "sass:color";
+
+.table {
+    &__main {
+        overflow-x: auto;
+    }
+
+    &__content{
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    &__header {
+        background-color: inherit;
+        border-bottom: 1px solid #ddd;
+
+        &__cell {
+            border-bottom: 1px solid #e2e5e8;
+            font-size: 14px;
+            color: variables.$text-color-primary;
+            background-color: #f6f6f6;
+            padding: 1.20rem .75rem;
+            text-align: left;
+            font-weight: bold;
+            white-space: nowrap;
+
+            &__icon {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+        }
+
+        .text-center div {
+            justify-content: center;
+        }
+    }
+
+    &__row {
+        border-bottom: 1px solid #eee;
+    }
+
+    &__cell, &__empty-cell {
+        border-bottom: 1px solid #e2e5e8;
+        font-size: 14px;
+        color: variables.$text-color-primary;
+        padding: 1.20rem .75rem;
+    }
+
+    &__cell {
+        &--image {
+            padding: 0;
+            
+            img {
+                width: 36px;
+                border-radius: 50%;
+            }
+        }
+
+        &__buttons {
+            padding-inline: 10px;
+        }
+
+        &__skeleton {
+            width: 100%;
+            height: 16px;
+            padding-block: 4px;
+            background: #e9e9e9;
+            border-radius: variables.$global-radius;
+            position: relative;
+            overflow: hidden;
+
+            &::after {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: -100%;
+              height: 100%;
+              width: 100%;
+              background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.6) 50%,
+                rgba(255, 255, 255, 0) 100%
+              );
+              animation: skeleton-loading 1.5s infinite;
+            }
+        }
+    }
+
+    &__cell &:last-child {
+        flex: 0;
+    }
+    
+    &__priority {
+        border-radius: variables.$global-radius;
+        padding: 5px 10px;
+        color: white;
+        font-size: 0.9rem;
+
+        &--low {
+            background-color: #dc3545;
+        }
+
+        &--medium {
+            background-color: #28a745;
+        }
+
+        &--high {
+            background-color: #17a2b8;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        padding-block: 20px;
+        font-size: 14px;
+    }
+}
+
+.menu-tooltip {
+    position: relative;
+    display: inline-block;
+    padding-inline: 15px;
+  
+    &__trigger {
+        display: inline-block;
+    }
+  
+    &__button {
+        background-color: variables.$tertiary-color;
+        border: none;
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: variables.$global-radius;
+        font-size: 14px;
+        color: variables.$text-color-primary;
+        transition: background-color 1s ease;
+
+        &:hover {
+            background-color: color.adjust(variables.$tertiary-color, $lightness: -5%);
+            outline: none;
+        }
+
+        &--main {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+    }
+  
+    &__content {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        transform: translateX(0%);
+        background-color: variables.$tertiary-color;
+        border: 1px solid #b3b3b3af;
+        border-radius: variables.$global-radius;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 5px 0;
+        min-width: 150px;
+        display: none;
+        opacity: 0;
+        transition: opacity 1s ease;
+        pointer-events: none;
+        z-index: 1;
+
+        .menu-tooltip:hover &, .menu-tooltip:focus-within & {
+            display: block;
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+  
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+  
+    &__item {
+        padding: 0;
+    }
+  
+    &__button {
+        width: 100%;
+        padding: 8px 15px;
+        color: variables.$text-color-primary;
+        font-size: 14px;
+    
+        &:hover, &:focus, &:focus-within {
+            background-color: #f0f0f0;
+            outline: none;
+        }
+    }
+
+}
+
+@keyframes skeleton-loading {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+}

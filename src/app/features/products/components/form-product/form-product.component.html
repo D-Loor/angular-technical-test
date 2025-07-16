@@ -1,0 +1,105 @@
+<div class="form-container">
+    <form action="" [formGroup]="form" aria-label="Data Form">
+        <div class="grid">
+            <div class="col-6">
+            <div class="form-container__field">
+                <app-input [formGroup]="form"
+                    [inputData]="{
+                        id: 'id',
+                        type: 'text',
+                        label: 'ID',
+                        placeholder: '',
+                        value: '',
+                        formControlName: 'id',
+                        required: true,
+                        disabled: productEdit() != null
+                    }"
+                    (outputData)="verificationProduct($event)"></app-input>
+            </div>
+            </div>
+            <div class="col-6">
+                <div class="form-container__field">
+                <app-input [formGroup]="form"
+                    [inputData]="{
+                        id: 'name',
+                        type: 'text',
+                        label: 'Nombre',
+                        placeholder: '',
+                        value: '',
+                        formControlName: 'name',
+                        required: true,
+                    }"></app-input>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-container__field">
+                <app-input [formGroup]="form"
+                    [inputData]="{
+                        id: 'description',
+                        type: 'text',
+                        label: 'Descripción',
+                        placeholder: '',
+                        value: '',
+                        formControlName: 'description',
+                        required: true,
+                    }"></app-input>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-container__field">
+                <app-input [formGroup]="form"
+                    [inputData]="{
+                        id: 'logo',
+                        type: 'text',
+                        label: 'Logo',
+                        placeholder: '',
+                        value: '',
+                        formControlName: 'logo',
+                        required: true,
+                    }"></app-input>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-container__field">
+                <app-input [formGroup]="form"
+                    [inputData]="{
+                        id: 'date_release',
+                        type: 'date',
+                        label: 'Fecha de Liberación',
+                        placeholder: '',
+                        value: '',
+                        formControlName: 'date_release',
+                        required: true,
+                    }"
+                    (outputData)="loadDateRevision($event)"></app-input>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-container__field">
+                <app-input [formGroup]="form"
+                    [inputData]="{
+                        id: 'date_revision',
+                        type: 'date',
+                        label: 'Fecha de Revision',
+                        placeholder: '',
+                        value: '',
+                        formControlName: 'date_revision',
+                        required: true,
+                        disabled: true,
+                    }"></app-input>
+                </div>
+            </div>
+            <div> <span></span></div>
+        </div>
+        <div class="form-container__buttons">
+            <app-button
+            [buttonData]="leftButtonForm"
+            (clickEvent)="productEdit() ? onCancel() : onReset()"
+            ></app-button>
+            <app-button
+            [buttonData]="rigthButtonForm"
+            (clickEvent)="onSubmit()"
+            ></app-button>
+        </div>
+    </form>
+</div>

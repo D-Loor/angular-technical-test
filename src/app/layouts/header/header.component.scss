@@ -1,0 +1,22 @@
+@use '../../../styles/abstracts/variables' as variables;
+
+.header {
+    background: variables.$tertiary-color;
+
+    &__content {
+        padding-block: 20px;
+
+        &__logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+
+            span {
+                font-weight: 700;
+                font-size: 18px;
+                color: variables.$secondary-color;
+            }
+        }
+    }
+}

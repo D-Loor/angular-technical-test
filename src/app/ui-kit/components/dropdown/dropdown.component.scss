@@ -1,0 +1,42 @@
+@use '../../../../styles/abstracts/variables' as variables;
+
+.content {
+    margin-bottom: 1rem;
+
+    &__label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: .875rem;
+    }
+
+    &__dropdown {
+        display: block;
+        width: 100%;
+        padding: 8px 36px 8px 22px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: variables.$tertiary-color;
+        border: 2px solid #b3b3b3af;
+        border-radius: variables.$global-radius;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+        appearance: none;
+        background-image: url('../../../../assets/svgs/down.svg');
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-size: 8px;
+    }
+
+    &__dropdown:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: variables.$secondary-color;
+        box-shadow: 0 0 0 0 rgba(26, 50, 188, 0.25);
+    }
+
+    .ng-invalid.ng-touched {
+        border-color: variables.$error-color;
+    }
+}

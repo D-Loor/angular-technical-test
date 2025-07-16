@@ -1,0 +1,42 @@
+@use './variables' as variables;
+
+@mixin content-flex($justify: start, $align: start, $gap: 0) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}
+
+@mixin width-global() {
+    max-width: variables.$max-width;
+    margin: 0 auto;
+}
+
+@mixin title-text() {
+    color: variables.$primary-color;
+    text-align: start;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: normal;
+    font-family: AERadar;
+    letter-spacing: normal;
+}
+
+@mixin close-button($font-size, $color, $hover-color) {
+    background: none;
+    border: none;
+    font-size: $font-size;
+    cursor: pointer;
+    color: $color;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: $hover-color;
+    }
+}
+
+@mixin visibility-element($visibility: visible, $opacity: 1, $transition: 0.5s) {
+    visibility: $visibility;
+    opacity: $opacity;
+    transition: $transition;
+}

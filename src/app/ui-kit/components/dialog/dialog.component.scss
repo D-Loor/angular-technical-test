@@ -1,0 +1,59 @@
+@use "sass:color";
+@use '../../../../styles/abstracts/variables' as variables;
+@use '../../../../styles/abstracts/mixins' as mixins;
+
+.modal {
+    @include mixins.content-flex(center, center);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: variables.$loader-bg-color;
+    z-index: 2;
+
+    &__content {
+        border-radius: variables.$global-radius;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        width: 80%;
+        max-width: 360px;
+    }
+
+    &__header {
+        @include mixins.content-flex(center, space-between);
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        background: variables.$info-color;
+    }
+
+    &__title {
+        margin: 0;
+        font-size: 16px;
+        color: #ddd;
+    }
+
+    &__close-button {
+        @include mixins.close-button(2rem, #555, #222);
+    }
+
+    &__body {
+        padding: 20px 20px 30px 20px;
+        font-size: 14px;
+    }
+
+    &__description {
+        margin: 0;
+    }
+
+    &__footer {
+        @include mixins.content-flex(space-between, flex-end, 12px);
+        padding:15px 20px;
+        border-top: 1px solid #ddd;
+
+        app-button {
+            width: 100%;
+        }
+    }
+
+}

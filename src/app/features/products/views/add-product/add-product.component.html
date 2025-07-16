@@ -1,0 +1,7 @@
+<div class="add-product">
+    <app-card [cardData]="cardData">
+        <div class="form-container">
+            <app-form-product (submitForm)="addProduct($event)" [resetForm]="resetForm"></app-form-product>
+        </div>
+    </app-card>
+</div>

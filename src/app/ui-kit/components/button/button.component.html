@@ -1,0 +1,15 @@
+<div class="button-content">
+    <button role="button" class="button-content__button"
+        [ngClass]="{'button-content__button--small': buttonData()?.size == 'small',
+            'button-content__button--large': buttonData()?.size == 'large',
+            'button-content__button--primary': buttonData()?.customClass == 'primary',
+            'button-content__button--secondary': buttonData()?.customClass == 'secondary',
+            'button-content__button--disabled': buttonData()?.disabled}"
+        [disabled]="buttonData()?.disabled"
+        [attr.aria-label]="buttonData()?.label"
+        [attr.aria-disabled]="buttonData()?.disabled ? true : null"
+        [routerLink]="buttonData()?.routerLink ? buttonData()?.routerLink : null"
+        (click)="clickedEvent()">
+        {{ buttonData()?.label }} 
+    </button>
+</div>

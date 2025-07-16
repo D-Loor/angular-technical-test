@@ -1,0 +1,15 @@
+.form-container {
+    padding: 0 16px;
+    
+    &__field {
+        margin-bottom: 14px;
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: space-between;
+        max-width: 300px;
+        margin-inline: auto;
+        margin-block: 40px 20px;
+    }
+}

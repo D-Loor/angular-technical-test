@@ -1,0 +1,16 @@
+<div class="list-products">
+    <div class="list-products__header">
+        <app-input [inputData]="inputData" [formGroup]="searchFormGroup" role="search"></app-input>
+        <app-button *ngIf="buttonData" [buttonData]="buttonData" (clickEvent)="addButtonClick()"></app-button>
+    </div>
+    <app-card [cardData]="cardData">
+        <app-table 
+            [dataHeader]="tableHeader" 
+            [dataBody]="tableBody" [options]="true" 
+            [searchContent]="searchFormGroup.get('search')?.value"
+            [showSkeleton]="loadingData"
+            (clickedOptions)="optionClicked($event)"></app-table>
+    </app-card>
+</div>
+
+<app-dialog [presentDialog]="presentDialog" (clickLeftButton)="onClickCancelDialog()" (clickRightButton)="onClickConfirmDialog()"></app-dialog>
